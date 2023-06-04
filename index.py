@@ -36,9 +36,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    name = ["VARB"]
-    response = send_request(name[0])
-    return render_template('index.html',data=response.json(),name=name)
+    names = ["VARB","ITC","IHTL","AXBK","ICBK","BOB"]
+    data = []
+    
+    for name in names:
+        response = send_request(name)
+        data.append(response.json())
+    return render_template('index.html',data=data,name=name)
     
 
 if __name__ == '__main__':
